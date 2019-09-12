@@ -38,7 +38,7 @@ object chuckNorris{
 
 object neo{
 	var peso = 0
-	var credito = 10
+	var property credito = 10
 	
 	method pesoTotal(){
 		return peso

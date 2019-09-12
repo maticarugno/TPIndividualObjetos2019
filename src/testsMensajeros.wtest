@@ -23,9 +23,10 @@ test "Roberto con un camion con dos acoplados no puede entregar un paquete pago 
 	assert.notThat(paquete.puedeSerEntregado(roberto,puenteBrooklyn))
 }
 
-test "neo puede entregar un paquete pago en la matrix"{
+test "neo se queda sin credito y no puede entregar un paquete pago en la matrix"{
 	paquete.pagar()
-	assert.that(paquete.puedeSerEntregado(neo,laMatrix))
+	neo.credito(0)
+	assert.notThat(paquete.puedeSerEntregado(neo,laMatrix))
 }
 
 test "roberto en bicicleta no puede entregar un paquete en la Matrix"{
