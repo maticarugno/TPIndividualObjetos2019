@@ -1,0 +1,33 @@
+import Mensajeros.*
+import Mensajeria.*
+
+describe "Tests de Mesajeria"{
+	
+	fixture{
+		paquete.pagar()
+	}
+
+	test "la empresa contrata a neo y chuck norris y despide a todos"{
+		empresa.contratar(neo)
+		empresa.contratar(chuckNorris)
+		empresa.despedirTodos()
+		assert.that(empresa.noHayEmpleados())
+	}
+	test "la empresa es grande despues de contratar a roberto, neo y chuck norris"{
+		empresa.contratar(roberto)
+		empresa.contratar(neo)
+		empresa.contratar(chuckNorris)
+		assert.that(empresa.esGrande())
+	}
+	test "la empresa contrata a chuck norris y el peso del ultimo es 900"{
+		empresa.contratar(chuckNorris)
+		assert.equals(empresa.pesoDelUltimo(),900)
+	}
+	test "la empresa contrata a roberto y neo y el primero puede entregar el paquete"{
+		empresa.contratar(roberto)
+		empresa.contratar(neo)
+		assert.that(empresa.puedeEntregarElPrimero(paquete))
+	}
+
+	
+}

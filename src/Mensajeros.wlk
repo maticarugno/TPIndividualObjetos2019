@@ -1,6 +1,8 @@
+import Mensajeria.*
+
 object paquete{
 	var estaPago = false
-	var property destino
+	var property destino = puenteBrooklyn
 	
 	method pagar(){
 		estaPago = true
@@ -15,7 +17,7 @@ object paquete{
 }
 
 object roberto {
-	var property transporte = camion
+	var property transporte = bicicleta
 	var peso = 90 
 
 	method pesoTotal(){
