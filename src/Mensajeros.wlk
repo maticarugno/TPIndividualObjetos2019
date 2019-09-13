@@ -1,5 +1,6 @@
 object paquete{
 	var estaPago = false
+	var property destino
 	
 	method pagar(){
 		estaPago = true
@@ -7,7 +8,7 @@ object paquete{
 	method estaPago(){
 		return estaPago
 	}
-	method puedeSerEntregado(mensajero,destino){
+	method puedeSerEntregado(mensajero){
 		return destino.puedePasar(mensajero) && estaPago
 	}
 

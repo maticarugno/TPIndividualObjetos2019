@@ -1,36 +1,40 @@
 import Mensajeros.*
 
-test "Roberto con camion de un acoplado puede llevar un paquete pago al puenteBrooklyn" {
+describe "Test mensajeros"{
+
+fixture {
 	paquete.pagar()
-	camion.acoplados(1)
-	roberto.transporte(camion)
-	assert.that(paquete.puedeSerEntregado(roberto,puenteBrooklyn))
 }
 
-test "neo no puede llevar un paquete no pago a la matrix"{
-	assert.notThat(paquete.puedeSerEntregado(neo,laMatrix))
+test "Roberto con camion de un acoplado puede llevar un paquete pago al puenteBrooklyn" {
+	camion.acoplados(1)
+	roberto.transporte(camion)
+	paquete.destino(puenteBrooklyn)
+	assert.that(paquete.puedeSerEntregado(roberto))
 }
 
 test "chuck Norris puede entregar un paquete pago en la matrix"{
-	paquete.pagar()
-	assert.that(paquete.puedeSerEntregado(chuckNorris,laMatrix))
+	paquete.destino(laMatrix)
+	assert.that(paquete.puedeSerEntregado(chuckNorris))
 }
 
 test "Roberto con un camion con dos acoplados no puede entregar un paquete pago en puente Brooklyn"{
-	paquete.pagar()
 	camion.acoplados(2)
 	roberto.transporte(camion)
-	assert.notThat(paquete.puedeSerEntregado(roberto,puenteBrooklyn))
+	paquete.destino(puenteBrooklyn)
+	assert.notThat(paquete.puedeSerEntregado(roberto))
 }
 
 test "neo se queda sin credito y no puede entregar un paquete pago en la matrix"{
-	paquete.pagar()
 	neo.credito(0)
-	assert.notThat(paquete.puedeSerEntregado(neo,laMatrix))
+	paquete.destino(laMatrix)
+	assert.notThat(paquete.puedeSerEntregado(neo))
 }
 
 test "roberto en bicicleta no puede entregar un paquete en la Matrix"{
-	paquete.pagar()
 	roberto.transporte(bicicleta)
-	assert.notThat(paquete.puedeSerEntregado(roberto,laMatrix))
+	paquete.destino(laMatrix)
+	assert.notThat(paquete.puedeSerEntregado(roberto))
+}
+	
 }
